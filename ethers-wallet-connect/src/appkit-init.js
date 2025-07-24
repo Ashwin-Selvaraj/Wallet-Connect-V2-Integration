@@ -1,19 +1,19 @@
 // src/appkit-init.ts
 import { createAppKit } from "@reown/appkit/react";
 import { EthersAdapter } from "@reown/appkit-adapter-ethers";
-import { arbitrum, mainnet } from "@reown/appkit/networks";
+import { bsc, bscTestnet } from "@reown/appkit/networks";
 
 // Replace with your actual project ID
 const projectId = process.env.REACT_APP_PROJECT_ID || "your-project-id";
 
 // Networks to support
-const networks = [arbitrum, mainnet];
+const networks = [bsc, bscTestnet];
 
 // Optional: Add your website metadata
 const metadata = {
-  name: "My Website",
-  description: "My Website description",
-  url: "https://mywebsite.com", // must match your deployed URL
+  name: "The Meme TV",
+  description: "Turning your screen time into earnings with memes and tokens.",
+  url: "https://app.thememetv.com", // must match your deployed URL
   icons: ["https://avatars.mywebsite.com/"],
 };
 
@@ -24,6 +24,9 @@ createAppKit({
   metadata,
   projectId,
   features: {
-    analytics: true, // Optional
+    analytics: true, //Optional
+    email: false, //Optional\
+    google: false, //Optional
+    socials: false, //Optional,
   },
 });
