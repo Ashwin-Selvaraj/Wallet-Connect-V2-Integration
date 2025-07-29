@@ -7,7 +7,7 @@ import { bsc, bscTestnet } from "@reown/appkit/networks";
 const projectId = process.env.REACT_APP_PROJECT_ID || "your-project-id";
 
 // Networks to support
-const networks = [bsc, bscTestnet];
+const networks = [bscTestnet];
 
 // Optional: Add your website metadata
 const metadata = {
