@@ -10,12 +10,11 @@ function App() {
   const [signer, setSigner] = useState(null);
   const [address, setAddress] = useState(null);
   const [balance, setBalance] = useState(null);
-  const [chainId, setChainId] = useState(null);
   const [error, setError] = useState(null);
 
   const { disconnect } = useDisconnect();
   const { walletProvider } = useAppKitProvider('eip155');
-  const { network } = useAppKitNetwork();
+  const { chainId, caipNetwork } = useAppKitNetwork();
 
   useEffect(() => {
     const fetchWalletData = async () => {
@@ -25,12 +24,10 @@ function App() {
           const signer = await ethersProvider.getSigner();
           const userAddress = await signer.getAddress();
           const userBalance = await ethersProvider.getBalance(userAddress);
-          const net = await ethersProvider.getNetwork();
 
           setSigner(signer);
           setAddress(userAddress);
           setBalance(formatEther(userBalance));
-          setChainId(net.chainId);
         }
       } catch (err) {
         setError(err.message);
@@ -59,7 +56,7 @@ function App() {
   }, [signer]);
 
   useEffect(() => {
-    console.log('signer', signer, 'address', address, 'balance', balance, 'chainId', chainId);
+    console.log('signer', signer, 'address', address, 'balance', balance, 'chainId', chainId, 'caipNetwork', caipNetwork.name);
   }, [signer, address, balance, chainId]);
 
   return (
